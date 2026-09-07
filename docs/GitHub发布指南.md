@@ -12,7 +12,7 @@
 4. 添加经确认的远程地址并正常推送，不使用强制推送覆盖已有历史。
 5. 在仓库页面确认README、17个技能与自动校验结果。
 
-根目录HTML是离线导航。发布代码不会自动启用GitHub Pages；如需在线导航站点，应另行配置Pages及适当的文档链接。
+在线导航使用 GitHub Pages。在仓库 Settings → Pages 中选择 GitHub Actions，运行 Publish skill navigation 工作流。`python scripts/build_pages.py` 只把导航页写入 `dist/pages/index.html`，文档链接转向 GitHub，不发布工作目录中的其他文件。根目录HTML仍可离线使用。
 
 ## 内容状态
 
