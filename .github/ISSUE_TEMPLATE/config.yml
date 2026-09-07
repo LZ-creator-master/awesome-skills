@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 先查安装指南
+    url: https://github.com/LZ-creator-master/awesome-skills/blob/main/00-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.md
+    about: 安装位置、冲突和调用方式

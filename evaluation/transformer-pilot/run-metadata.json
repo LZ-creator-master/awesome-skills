@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-07",
+  "design": "one matched pair; isolated task contexts; shared platform rules and skill catalog metadata",
+  "model": "same inherited parent model and reasoning configuration; exact snapshot/temperature/seed unavailable",
+  "samples_per_arm": 1,
+  "tools": "input file reading and own output writing only; no web access",
+  "inputs_sha256_normalized_lf": {
+    "material.md": "93a9fd37c42f2678c1f8c5b2df2c76e1478864591d05333885811ad84e73fc32",
+    "task.md": "949e1a627b44ccb1737573e3783d1616bc0af11b354432bd3364569316e49209",
+    "protocol.md": "70592c17caa821bee9719db130793a76eef32a64872d44cdb9afb2cc7181f5fd"
+  },
+  "outputs": {
+    "output-a.md": "da921786bf9c2a9c2414b470810a4c3cca2dca5817997aeec2977a9a79e9acb9",
+    "output-b.md": "88cccd99b1a08af463f38f7939fb794afdccf23f7df39c48dda7923bf3f176ea"
+  },
+  "skill_file": "01-学术研究/论文深度解读/技能包/paper-analyzer/SKILL.md",
+  "skill_sha256": "72c45768ae213e30af58777bf41163b193551504b7cba36ace3d843b193e550f"
+}

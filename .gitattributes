@@ -3,3 +3,6 @@
 **/references/原始说明.txt -text
 *.png binary
 *.zip binary
+*.mp4 binary
+# Preserve the exact paired-run outputs used for provenance hashes.
+evaluation/transformer-pilot/output-*.md -text whitespace=trailing-space,space-before-tab,cr-at-eol

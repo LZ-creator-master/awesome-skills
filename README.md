@@ -18,6 +18,27 @@
 
 本案例是使用 `paper-analyzer` 流程完成的AI辅助解读，非作者官方解读或模型训练复现；互动数据是明确标注的教学算例。[另看纯文本润色对照](docs/润色演示.md)。
 
+## 再看一个领域案例：从LightGCN到组会汇报
+
+[![LightGCN实际页面截图](assets/lightgcn-case-preview.png)](https://lz-creator-master.github.io/awesome-skills/examples/lightgcn/)
+
+[打开LightGCN中文解读](https://lz-creator-master.github.io/awesome-skills/examples/lightgcn/) · [下载10分钟组会提纲](examples/lightgcn/outline.md)
+
+两个案例都支持**基础/进阶阅读切换、动手算例和带解析自测**。LightGCN案例把推荐系统的方法、评测条件和源码对应连起来，再整理成可以讲述的提纲。文字提纲不等于已生成PPTX。
+
+## 选入口、看验证，再开始
+
+| 你想先了解什么 | 直接打开 |
+|---|---|
+| 按“读论文、改段落、做汇报”选择安装命令和提示词 | [一分钟选择入口](https://lz-creator-master.github.io/awesome-skills/#start) |
+| 哪些技能实际有产物，哪些仍待测试 | [17项验证状态](docs/技能验证状态.md) |
+| 加技能是否一定更好 | [有/无技能隔离对照：本次清单得分无差异](evaluation/transformer-pilot/results.md) |
+| 先看看怎么操作 | [30秒实际页面视频](https://lz-creator-master.github.io/awesome-skills/#demo) · [下载MP4](media/skills-demo.mp4) |
+| 发现解释或数字有问题 | [提交内容核对](https://github.com/LZ-creator-master/awesome-skills/issues/new?template=content-error.yml) |
+| 分享成功或失败的使用经历 | [提交使用案例](https://github.com/LZ-creator-master/awesome-skills/issues/new?template=usage-case.yml) |
+
+当前有2个技能的业务案例；其余15项仅完成包与安装检查，业务流程未实测。对照试验只有1对样本，保留输入、原始输出、评分规则和局限，不宣称普遍性能提升。
+
 ## 从你的任务开始
 
 | 现在要做什么 | 先试哪个技能 | 准备什么 / 预期得到什么 |

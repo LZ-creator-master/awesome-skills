@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-09-07",
+  "scope": "安装检查与业务验证分开记录；不推定所有宿主自动发现均有效。",
+  "skills": [
+    {
+      "id": "academic-pipeline",
+      "name": "学术论文全流程",
+      "package_check": "文件/入口/安装器检查通过",
+      "workflow_status": "业务流程尚未实测",
+      "checked_on": "2026-09-07",
+      "environment": "本地包校验与安装器测试；不是业务调用",
+      "model": "未运行业务模型",
+      "evidence": null,
+      "dependencies": "缺少 academic-paper、academic-paper-reviewer，以及 agents、shared、references、templates、examples 配套文件；本包不能复现原版多智能体、护照恢复和自动审计机制。"
+    },
+    {
+      "id": "paper-analyzer",
+      "name": "论文深度解读",
+      "package_check": "文件/入口/安装器检查通过",
+      "workflow_status": "HTML与文字案例已验证",
+      "checked_on": "2026-09-07",
+      "environment": "Windows / Codex对话；手动读取技能入口",
+      "model": "当前任务继承配置；精确模型快照未记录",
+      "evidence": "docs/论文案例说明.md",
+      "dependencies": "缺少 styles 下五份风格规范与 scripts/generate_html.py；原文已经包含三种风格要求及 HTML 示例，可使用实际可用工具生成网页。"
+    },
+    {
+      "id": "paper-analysis-assistant",
+      "name": "论文多格式分析助手",
+      "package_check": "文件/入口/安装器检查通过",
+      "workflow_status": "业务流程尚未实测",
+      "checked_on": "2026-09-07",
+      "environment": "本地包校验与安装器测试；不是业务调用",
+      "model": "未运行业务模型",
+      "evidence": null,
+      "dependencies": "原文所列下载、提取、词频、语音、播客、HTML、PPT、引用脚本和 stopwords.txt 均未提供；采用当前可用能力逐项完成，不保证原版批处理链。"
+    },
+    {
+      "id": "research-review",
+      "name": "研究批判性评审",
+      "package_check": "文件/入口/安装器检查通过",
+      "workflow_status": "业务流程尚未实测",
+      "checked_on": "2026-09-07",
+      "environment": "本地包校验与安装器测试；不是业务调用",
+      "model": "未运行业务模型",
+      "evidence": null,
+      "dependencies": "原版依赖 Claude Code 中的 Codex MCP 工具；当前未发现这些工具。可做本地批判性评审，不能宣称已完成外部独立模型复核。"
+    },
+    {
+      "id": "paper-deaiify",
+      "name": "论文自然表达润色",
+      "package_check": "文件/入口/安装器检查通过",
+      "workflow_status": "纯文本润色案例已验证",
+      "checked_on": "2026-09-07",
+      "environment": "Windows / Codex对话；手动读取技能入口",
+      "model": "当前任务继承配置；精确模型快照未记录",
+      "evidence": "docs/润色演示.md",
+      "dependencies": "缺少词汇、句式、学科参考表和检测脚本；已取消“检测率低于15%”等无法保证的承诺，并纠正示例中凭空添加调研经历的做法。"
+    },
+    {
+      "id": "paper-comic",
+      "name": "论文方法图解",
+      "package_check": "文件/入口/安装器检查通过",
+      "workflow_status": "业务流程尚未实测",
+      "checked_on": "2026-09-07",
+      "environment": "本地包校验与安装器测试；不是业务调用",
+      "model": "未运行业务模型",
+      "evidence": null,
+      "dependencies": "缺少三份参考规范，但原文已给出两种画风、逐页结构和质量标准；生成图片需要当前图像工具。"
+    },
+    {
+      "id": "paper-deck",
+      "name": "论文视觉幻灯片",
+      "package_check": "文件/入口/安装器检查通过",
+      "workflow_status": "业务流程尚未实测",
+      "checked_on": "2026-09-07",
+      "environment": "本地包校验与安装器测试；不是业务调用",
+      "model": "未运行业务模型",
+      "evidence": null,
+      "dependencies": "缺少 merge_deck.py 及六份参考规范；可用现有演示文稿和 PDF 能力合成。整页图像式 PPTX 不等于可逐字编辑的 PPTX。"
+    },
+    {
+      "id": "nanobanana-ppt-visualizer",
+      "name": "幻灯片视觉增强与播放",
+      "package_check": "文件/入口/安装器检查通过",
+      "workflow_status": "业务流程尚未实测",
+      "checked_on": "2026-09-07",
+      "environment": "本地包校验与安装器测试；不是业务调用",
+      "model": "未运行业务模型",
+      "evidence": null,
+      "dependencies": "缺少播放器、素材管理、视频合成脚本、风格模板和 ppt-generator；视频合成需要 FFmpeg 或其他可用视频工具，可灵接口未配置。"
+    },
+    {
+      "id": "content-creator-skill-scarfbro",
+      "name": "围巾哥内容创作套件",
+      "package_check": "文件/入口/安装器检查通过",
+      "workflow_status": "业务流程尚未实测",
+      "checked_on": "2026-09-07",
+      "environment": "本地包校验与安装器测试；不是业务调用",
+      "model": "未运行业务模型",
+      "evidence": null,
+      "dependencies": "保留原作者署名；缺少三份参考指南和五个辅助脚本。语音、图像、PPTX、Word 由实际可用工具完成，不承诺自动达到出版质量。"
+    },
+    {
+      "id": "requirement-analyser",
+      "name": "一句话需求拆解",
+      "package_check": "文件/入口/安装器检查通过",
+      "workflow_status": "业务流程尚未实测",
+      "checked_on": "2026-09-07",
+      "environment": "本地包校验与安装器测试；不是业务调用",
+      "model": "未运行业务模型",
+      "evidence": null,
+      "dependencies": "原版面向 Trae Solo；已改用当前环境的文档和分析能力，移除所有任务优先触发及自动开始开发的要求。"
+    },
+    {
+      "id": "requirements-fractal",
+      "name": "分层需求细化与追踪",
+      "package_check": "文件/入口/安装器检查通过",
+      "workflow_status": "业务流程尚未实测",
+      "checked_on": "2026-09-07",
+      "environment": "本地包校验与安装器测试；不是业务调用",
+      "model": "未运行业务模型",
+      "evidence": null,
+      "dependencies": "缺少三份模板与验证参考，以及原文列举的上下游技能；用本文内置输出结构和当前可用能力完成。"
+    },
+    {
+      "id": "prd-bomb-detector",
+      "name": "产品需求风险排查",
+      "package_check": "文件/入口/安装器检查通过",
+      "workflow_status": "业务流程尚未实测",
+      "checked_on": "2026-09-07",
+      "environment": "本地包校验与安装器测试；不是业务调用",
+      "model": "未运行业务模型",
+      "evidence": null,
+      "dependencies": "缺少结构模板和分析框架文件；原文经验评分不能当作经验证的概率或行业标准，已有正文可支撑分析。"
+    },
+    {
+      "id": "doc-format-checker",
+      "name": "文档格式审核与修正",
+      "package_check": "文件/入口/安装器检查通过",
+      "workflow_status": "业务流程尚未实测",
+      "checked_on": "2026-09-07",
+      "environment": "本地包校验与安装器测试；不是业务调用",
+      "model": "未运行业务模型",
+      "evidence": null,
+      "dependencies": "缺少五个脚本和格式配置；当前文档工具可替代。已纠正“跨run空格必不显示、必须合并run”的不准确规则，精确页码必须经渲染核对。"
+    },
+    {
+      "id": "knowledge-compound",
+      "name": "知识沉淀与记忆管理",
+      "package_check": "文件/入口/安装器检查通过",
+      "workflow_status": "业务流程尚未实测",
+      "checked_on": "2026-09-07",
+      "environment": "本地包校验与安装器测试；不是业务调用",
+      "model": "未运行业务模型",
+      "evidence": null,
+      "dependencies": "原版 memory_bank.py 未提供；使用项目内可读文件代替，不承诺全会话自动加载、后台常驻或修改平台原生记忆。"
+    },
+    {
+      "id": "skill-auditor",
+      "name": "技能审查与优化",
+      "package_check": "文件/入口/安装器检查通过",
+      "workflow_status": "业务流程尚未实测",
+      "checked_on": "2026-09-07",
+      "environment": "本地包校验与安装器测试；不是业务调用",
+      "model": "未运行业务模型",
+      "evidence": null,
+      "dependencies": "原文无标准入口信息，缺少checklist.md和examples.md；已补入口和中文使用说明，正文包含足够的审查框架。"
+    },
+    {
+      "id": "skill-selector",
+      "name": "技能选择助手",
+      "package_check": "文件/入口/安装器检查通过",
+      "workflow_status": "业务流程尚未实测",
+      "checked_on": "2026-09-07",
+      "environment": "本地包校验与安装器测试；不是业务调用",
+      "model": "未运行业务模型",
+      "evidence": null,
+      "dependencies": "不再假定find-skills已安装；新技能发现和安装使用当前实际可用的安装或插件管理能力。"
+    },
+    {
+      "id": "playful-companion",
+      "name": "小恶魔女友",
+      "package_check": "文件/入口/安装器检查通过",
+      "workflow_status": "业务流程尚未实测",
+      "checked_on": "2026-09-07",
+      "environment": "本地包校验与安装器测试；不是业务调用",
+      "model": "未运行业务模型",
+      "evidence": null,
+      "dependencies": "缺少四份角色参考；已移除强制接管所有任务、拒绝退出、隐瞒身份、强制污染文件的要求，角色明确为成年人。"
+    }
+  ]
+}

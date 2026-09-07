@@ -1,0 +1,38 @@
+name: 提交使用案例
+description: 分享输入、环境、产物和不足；成功与失败案例都欢迎。
+title: '[使用案例] '
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: 使用了哪个技能？
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 宿主、模型、操作系统与日期
+      description: 不确定的字段写“未知”，请勿粘贴密钥或登录信息。
+    validations:
+      required: true
+  - type: textarea
+    id: input
+    attributes:
+      label: 任务和可公开的输入
+      description: 提供提示词、公开资料链接或去标识后的最小示例。
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: 实际输出与不足
+      description: 附可公开截图或产物，说明哪些步骤成功、哪些需要手动处理。
+    validations:
+      required: true
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: 公开确认
+      options:
+        - label: 我确认提交内容可以在公开 Issue 中展示，不含私密或未经许可的材料。
+          required: true
