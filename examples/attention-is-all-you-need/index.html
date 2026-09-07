@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Transformer：让词语直接交换信息 · 中文论文解读</title>
+<meta name="description" content="Attention Is All You Need 中文阅读案例：方法流程、可操作的注意力实验、结果核验及作者公开源码。">
+<style>
+:root{color:#172c36;background:#f7f6f0;font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;line-height:1.85}*{box-sizing:border-box}body{margin:0}a{color:#175e8d;text-underline-offset:4px}header,main,footer{max-width:1080px;margin:auto;padding:32px}header{padding-top:50px}.top{display:flex;justify-content:space-between;gap:16px;font-size:13px}.eyebrow{color:#176482;font-weight:700;letter-spacing:2px;font-size:12px}.hero{padding:45px 0 20px}h1{font-size:clamp(32px,5vw,62px);line-height:1.2;letter-spacing:-2px;margin:14px 0 24px}h1 span{color:#147c8d}.lead{font-size:19px;max-width:780px}.meta{font-size:13px;color:#586d77}.nav{display:flex;flex-wrap:wrap;gap:12px 22px;padding:22px 0;border-top:1px solid #d3dbd8;border-bottom:1px solid #d3dbd8}main{padding-top:0}section{margin:28px 0 60px;scroll-margin-top:20px}h2{font-size:29px;line-height:1.4;margin:8px 0 24px}h3{font-size:19px;margin:10px 0}p{margin:12px 0}.muted,.source{font-size:13px;color:#5b6b72}.panel{padding:24px;border:1px solid #d6dfdd;background:white;border-radius:16px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.path{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.step{background:#e7efed;border-radius:12px;padding:20px}.step b{display:block;color:#126577}.formula{font-family:Georgia,"Times New Roman",serif;font-size:23px;padding:22px;background:#142f3c;color:#fff;border-radius:12px;overflow-x:auto;white-space:nowrap}.note{padding:16px 20px;border-left:4px solid #b67a24;background:#fbefda}.controls{display:flex;flex-wrap:wrap;align-items:center;gap:15px;margin:18px 0}select,button{font:inherit;padding:8px 12px;border:1px solid #a4b5b9;border-radius:8px;background:white;color:#183842}input{accent-color:#147c8d}button{cursor:pointer}.bars{display:grid;gap:13px}.barrow{display:grid;grid-template-columns:65px 1fr 64px;align-items:center;gap:12px}.track{height:24px;background:#edf1f2;border-radius:6px;overflow:hidden}.fill{height:100%;background:#167d8d}.output{font-size:18px;font-weight:700;color:#126577}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:13px;text-align:left;border-bottom:1px solid #dce3e1}th{background:#e9efed}code,pre{font-family:Consolas,monospace}code{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#edf1ef;padding:18px;border-radius:10px;font-size:14px}details{padding:17px 0;border-bottom:1px solid #d8e1df}summary{cursor:pointer;font-weight:700}footer{font-size:13px;color:#5b6b72;border-top:1px solid #d3dbd8}.cta{background:#143b4a;color:white;padding:28px;border-radius:16px}.cta a{color:#adf1ed}.cta h2{margin:0 0 14px}a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #e7a33c;outline-offset:4px}@media(max-width:680px){header,main,footer{padding:22px}.hero{padding-top:28px}h1{letter-spacing:-1px}.grid,.path{grid-template-columns:1fr}.top{flex-wrap:wrap}.panel{padding:18px}.barrow{grid-template-columns:55px 1fr 58px;gap:8px}.formula{font-size:18px}h2{font-size:25px}}
+</style></head>
+<body>
+<header><div class="top"><a href="../../index.html">← 中文实用技能库</a><span>真实论文案例 01 / paper-analyzer</span></div>
+<div class="hero"><div class="eyebrow">PAPER READING · 2017 / 阅读版本 v7</div><h1>Transformer：<br><span>让词语直接交换信息。</span></h1>
+<p class="lead">读懂一篇方法论文，要能说明信息怎么流动、公式算了什么，以及实验究竟支持多大的结论。这里用 Transformer 做一次可核对的示范。</p>
+<p class="meta">原论文：Attention Is All You Need · Ashish Vaswani 等8位作者<br>学术型中文解读 · 2026-09-07 · 已阅读 HTML 正文第1–7节与表格，核对 PDF 关键结果；非训练复现。</p>
+<p><a href="https://arxiv.org/abs/1706.03762v7">论文与作者信息 ↗</a> · <a href="#try">自己动手算注意力 ↓</a> · <a href="#reproduce">复制案例提示词 ↓</a></p></div>
+<nav class="nav" aria-label="文章目录"><a href="#method">方法路线</a><a href="#try">注意力实验</a><a href="#results">结果核对</a><a href="#code">源码对应</a><a href="#limits">阅读边界</a></nav></header>
+<main>
+<section id="method"><div class="eyebrow">01 / 先画出信息流</div><h2>句子进来，下一词的概率出去</h2>
+<p>原论文以注意力替代循环与卷积作为序列建模主干，采用编码器—解码器结构。训练时可并行处理已知序列位置，生成时仍逐词推进。<a class="source" href="https://arxiv.org/html/1706.03762v7#S3">原文 §3、图1</a></p>
+<div class="path" aria-label="根据原文结构重新绘制的简化信息流"><div class="step"><b>01 · 输入表示</b>词向量 + 位置信息<br><small>把符号变成带次序的向量</small></div><div class="step"><b>02 · 编码器</b>自注意力 → 前馈网络<br><small>形成源句的上下文表示</small></div><div class="step"><b>03 · 解码器</b>遮罩自注意力 → 交叉注意力 → 前馈 → 输出概率<br><small>使用源句和已有目标前缀</small></div></div>
+<p class="muted">本图为阅读辅助，省略残差、层归一化与层的重复堆叠；完整架构请看原文图1。</p>
+<div class="grid"><div class="panel"><h3>用三个问题拆开 Q、K、V</h3><p>Q 是当前位置的查询向量；K 是各候选位置用来匹配的键；V 是最终被加权汇总的内容。自注意力中，它们来自同一组表示的不同投影。</p><p class="muted">这是符号含义的教学解释。“查询”并不意味着模型在调用搜索引擎。</p></div><div class="panel"><h3>多头如何接上去</h3><p>各头用不同的学习投影分别计算注意力，再把结果拼接、投影回输出空间。前馈网络继续逐位置变换表示；注意力不是整个网络的唯一运算。</p><a class="source" href="https://arxiv.org/html/1706.03762v7#S3.S2">原文 §3.2–3.3、图2</a></div></div>
+</section>
+<section id="try"><div class="eyebrow">02 / 教学算例 · 非模型测量</div><h2>改变查询，看权重如何重新分配</h2>
+<div class="formula" role="math" aria-label="Attention 等于 softmax 括号 Q 乘 K 转置除以根号 d k 括号，再乘 V">Attention(Q, K, V) = softmax(QK<sup>T</sup> / √d<sub>k</sub>)V</div>
+<p>先算匹配分数，再归一化，最后汇总内容。下面由本案例构造三组二维向量，逐步算出一行注意力；数字和位置标签没有真实语义。公式来自原文式(1)，示例数据与交互由本案例编写。</p>
+<div class="panel"><p><strong>固定输入：</strong>K = [(1,0), (0,1), (1,1)]，V = [10,20,30]，d<sub>k</sub> = 2。查询来自位置B，q = [a,1]。</p>
+<div class="controls"><label for="query">查询分量 a：<output id="aValue">1.0</output></label><input id="query" type="range" min="-2" max="3" step="0.1" value="1"><label><input type="checkbox" id="mask">遮住未来位置C</label><button id="reset" type="button">重置算例</button></div>
+<p id="scores" class="muted"></p><div class="bars" aria-label="三个位置的注意力权重"><div class="barrow"><span>位置A</span><div class="track"><div class="fill" id="bar0"></div></div><output id="weight0"></output></div><div class="barrow"><span>位置B</span><div class="track"><div class="fill" id="bar1"></div></div><output id="weight1"></output></div><div class="barrow"><span>位置C</span><div class="track"><div class="fill" id="bar2"></div></div><output id="weight2"></output></div></div>
+<p class="output" id="result" aria-live="polite"></p><p class="muted">输出 = wA × 10 + wB × 20 + wC × 30。显示百分比经过四舍五入，计算使用完整精度。</p></div>
+<div class="grid"><div><h3>试着做一个预测</h3><p>先不要动滑块：若把 a 从1增加到3，A与C的分数都会提高，B保持不变。C的分数始终比A高 1/√2，因此这两个位置的权重之比不随 a 改变；它们相对B的占比会增大。</p><p>这是从本例向量直接算出的结果，不是训练得到的语言规律。可以用滑块核对自己的推理。</p></div><div><h3>再打开遮罩</h3><p>选中遮罩后，C的归一化前分数变为负无穷，权重归零。A与B重新分配全部权重，而不是保留原百分比后简单删去C。</p><p>这解释了为何遮罩应加在 softmax 之前。页面只演示单行计算，没有模拟训练、投影学习或多头组合。</p></div></div>
+<details><summary>为什么除以 √dₖ？</summary><p>在分量独立、均值0、方差1的简化假设下，dₖ项乘积的和具有方差dₖ；除以√dₖ把方差缩回1。这是解释数值尺度的条件性推导，不说明训练中的所有向量都满足该假设。<a href="https://arxiv.org/html/1706.03762v7#S3.S2.S1">原文 §3.2.1</a></p></details>
+</section>
+<section id="results"><div class="eyebrow">03 / 结果与出处</div><h2>先分清测试集和开发集</h2>
+<div class="tablewrap"><table><caption>原文表2的 Transformer 两行（BLEU，越高越好）</caption><thead><tr><th scope="col">配置</th><th scope="col">英→德 / newstest2014</th><th scope="col">英→法 / newstest2014</th></tr></thead><tbody><tr><th scope="row">Base</th><td>27.3</td><td>38.1</td></tr><tr><th scope="row">Big</th><td>28.4</td><td>41.8*</td></tr></tbody></table></div>
+<p class="source">来源：Vaswani 等，<a href="https://arxiv.org/html/1706.03762v7#S6.S1">§6.1 / 表2</a>；<a href="https://arxiv.org/pdf/1706.03762v7#page=8">PDF 第8页</a>。数据为作者报告，非本案例实测。</p>
+<p class="note">* 表2和摘要给出41.8，而该版本 §6.1 正文写41.0。这里按表2展示并保留差异，未找到足以解释这一处差异的证据。</p>
+<p>表3则使用 newstest2013 开发集：8头基线为25.8，单头为24.9。这组比较不能直接与表2分数拼成同一排行榜。<a class="source" href="https://arxiv.org/html/1706.03762v7#S6.S2">原文 §6.2 / 表3</a></p>
+<h3>读表之后，还该追问什么？</h3><p>读者可以自行建立三列核对表：评测对象、评测条件、比较结论。若两行使用不同数据集，先停止计算“提升”；若没有重复试验信息，不把单个分数差解释成稳定收益。BLEU也不等于“翻译正确的百分比”。这些是本案例的阅读建议。</p>
+</section>
+<section id="code"><div class="eyebrow">04 / 从公式走到实现</div><h2>固定源码版本，避免行号漂移</h2>
+<p>论文第7节指向作者公开项目 Tensor2Tensor。本次只静态阅读 <code>common_attention.py</code> 中相关函数，固定提交 <code>bafdc1b67730430d38d6ab802cbd51f9d053ba2e</code>；它是后续维护版本，不能当作2017年实验的精确代码快照。</p>
+<div class="tablewrap"><table><thead><tr><th>方法中的步骤</th><th>核对到的实现</th><th>固定版本定位</th></tr></thead><tbody>
+<tr><td>按每头键维度缩放</td><td>普通多头路径在点积之前缩放 q；vars_3d 分支另行处理，不能一概而论。</td><td><a href="https://github.com/tensorflow/tensor2tensor/blob/bafdc1b67730430d38d6ab802cbd51f9d053ba2e/tensor2tensor/layers/common_attention.py#L4694-L4702">4694–4702行</a></td></tr>
+<tr><td>点积 → 遮罩偏置 → softmax → 汇总V</td><td>dot_product_attention 先加 bias 再归一化，最后矩阵乘V；实现还包含 dropout 等训练处理。</td><td><a href="https://github.com/tensorflow/tensor2tensor/blob/bafdc1b67730430d38d6ab802cbd51f9d053ba2e/tensor2tensor/layers/common_attention.py#L1648-L1667">1648–1667行</a></td></tr>
+<tr><td>只允许当前位置及之前位置</td><td>attention_bias_lower_triangle 调用局部偏置辅助函数，右侧窗口为0。</td><td><a href="https://github.com/tensorflow/tensor2tensor/blob/bafdc1b67730430d38d6ab802cbd51f9d053ba2e/tensor2tensor/layers/common_attention.py#L976-L987">976–987行</a></td></tr>
+</tbody></table></div><p class="muted">未下载权重、未安装 TensorFlow、未运行作者训练配置。源码对应证明这里读到了相关运算，不证明复现了论文得分。</p>
+</section>
+<section id="limits"><div class="eyebrow">05 / 分清论文结论与阅读判断</div><h2>知道它做到了什么，也知道证据停在哪</h2>
+<div class="grid"><div class="panel"><h3>作者留下的问题</h3><p>原文表1列出全局自注意力的 O(n²d) 运算量；第7节把大输入的局部注意力和减少生成的顺序性列为后续方向。</p><a class="source" href="https://arxiv.org/html/1706.03762v7#S7">原文 §4、§7</a></div><div class="panel"><h3>本案例的独立判断</h3><p>不要从标题推导“任何任务只需注意力”。也不要把注意力权重直接当作因果解释：本页的条形图只是指定向量条件下的计算分配。若要判断某位置是否真正决定预测，还需要设计干预实验。</p></div></div>
+<h3>读完后，用三个问题自测</h3><details><summary>为什么输出可以是三个值之间的数？</summary><p>在这个没有 dropout 的单行算例中，softmax 权重非负且总和为1，所以加权输出位于V的最小值与最大值之间。完整模型还有后续变换，不能把这个范围限制套到整个网络。</p></details><details><summary>调整V会改变注意力条形图吗？</summary><p>在本算例固定Q、K的条件下不会；权重只由Q、K与遮罩决定。但输出会改变，因为被加权的内容变了。</p></details><details><summary>这个网页能证明技能比普通提示词更好吗？</summary><p>不能。它展示了一次按技能流程完成的产物。若要衡量技能增益，应对同一材料设置有技能与无技能的对照，用来源准确性、关键遗漏等一致标准评审多个样本。</p></details>
+</section>
+<section id="reproduce"><div class="eyebrow">06 / 同样的方法，换一篇论文</div><h2>给访客一个可以开始的入口</h2>
+<p>本案例在 Codex 对话中读取 <code>paper-analyzer</code> 技能入口后，使用网页检索、文件写入和浏览器校验完成。没有把安装后的自动触发当作已验证能力；页面公式、条形图与交互均在本地浏览器运行，无外部渲染库。</p>
+<pre id="prompt">请使用 $paper-analyzer，以学术型风格解读这篇论文：
+https://arxiv.org/abs/1706.03762v7
+
+先阅读全文，解释创新、信息流、核心公式、实验和局限。
+区分论文事实、教学例子和独立判断。
+对关键数字标注章节或表号；遇到来源不一致时保留差异。
+若存在作者公开代码，固定提交版本并核对至少两处源码。
+生成可独立打开的中文HTML；不要声称复现了未运行的实验。</pre>
+<button id="copy" type="button">复制调用提示词</button><span id="copyStatus" role="status"></span>
+<p>这是供下一次使用的复用提示词。本次还进行了资料核对和页面修订，不承诺单次调用得到完全相同的版式与文字。</p>
+<div class="cta"><h2>先看成果，再挑选技能。</h2><p><a href="https://github.com/LZ-creator-master/awesome-skills">查看仓库与安装说明 ↗</a> · <a href="../../index.html">浏览17个技能 →</a></p><p>如果这种阅读方式对你有用，可以 Star 收藏。也欢迎通过仓库 Issue 提出具体的来源错误或改进建议。</p></div>
+</section>
+</main><footer>本页为 AI 辅助撰写的中文教学解读，非作者官方解读。论文和代码归各自权利人所有；本页不转载论文全文。核对日期：2026-09-07。<a href="https://github.com/LZ-creator-master/awesome-skills/blob/main/docs/论文案例说明.md">过程记录、来源与复用说明</a></footer>
+<script>
+const slider=document.querySelector('#query'),mask=document.querySelector('#mask');
+function calculate(){const a=Number(slider.value);const logits=[a/Math.sqrt(2),1/Math.sqrt(2),mask.checked?-Infinity:(a+1)/Math.sqrt(2)];const max=Math.max(...logits);const exp=logits.map(x=>Math.exp(x-max));const sum=exp.reduce((x,y)=>x+y,0);const w=exp.map(x=>x/sum);document.querySelector('#aValue').textContent=a.toFixed(1);document.querySelector('#scores').textContent='归一化前分数：'+logits.map(x=>Number.isFinite(x)?x.toFixed(3):'−∞（遮罩）').join(' / ');w.forEach((x,i)=>{document.querySelector('#bar'+i).style.width=(100*x)+'%';document.querySelector('#weight'+i).textContent=(100*x).toFixed(1)+'%'});document.querySelector('#result').textContent='加权输出 = '+w.reduce((s,x,i)=>s+x*(i+1)*10,0).toFixed(3);}
+slider.addEventListener('input',calculate);mask.addEventListener('change',calculate);document.querySelector('#reset').addEventListener('click',()=>{slider.value=1;mask.checked=false;calculate()});document.querySelector('#copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(document.querySelector('#prompt').textContent);document.querySelector('#copyStatus').textContent=' 已复制'}catch{document.querySelector('#copyStatus').textContent=' 请选中上方提示词手动复制'}});calculate();
+</script></body></html>

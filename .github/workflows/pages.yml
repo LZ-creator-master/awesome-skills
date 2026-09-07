@@ -5,6 +5,7 @@ on:
     paths:
       - '00-技能导航.html'
       - 'scripts/build_pages.py'
+      - 'examples/attention-is-all-you-need/**'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 

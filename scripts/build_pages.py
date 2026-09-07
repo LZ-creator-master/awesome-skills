@@ -2,6 +2,7 @@
 from pathlib import Path
 from urllib.parse import quote
 import re
+import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'dist' / 'pages'
@@ -18,6 +19,10 @@ def build():
     html = re.sub(r'href="([^"]+)"', link, html)
     (OUT / 'index.html').write_text(html, encoding='utf-8')
     (OUT / '.nojekyll').write_text('', encoding='utf-8')
+    # Only the reviewed example is published, never arbitrary workspace files.
+    example = Path('examples/attention-is-all-you-need/index.html')
+    (OUT / example).parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(ROOT / example, OUT / example)
     print('Built public navigation: dist/pages/index.html')
 
 
