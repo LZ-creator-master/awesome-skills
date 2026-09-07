@@ -1,0 +1,6 @@
+interface:
+  display_name: "学术论文全流程"
+  short_description: "统筹选题、研究、写作、核验、评审、修订和定稿，适合从研究到论文的完整任务。"
+  default_prompt: "请使用 $academic-pipeline。请用学术论文全流程，帮我把这个研究主题推进到论文初稿和评审修订。"
+policy:
+  allow_implicit_invocation: true

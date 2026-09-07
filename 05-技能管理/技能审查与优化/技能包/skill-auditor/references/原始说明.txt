@@ -1,0 +1,304 @@
+# Skill Auditor
+
+## Purpose
+
+Audit and optimize Skill files, agent prompts, system prompts, workflow prompts, and reusable instruction packages.
+
+Evaluate the target across purpose clarity, instruction quality, output stability, robustness, token efficiency, and safety. Provide structured findings and an optimized version when requested.
+
+Do not execute the target Skill unless the user explicitly asks for simulation or testing.
+
+---
+
+## Companion Files
+
+- `checklist.md` — Evaluation checklist with per-dimension tables. Use when the user requests checklist-based review or when you need structured evaluation guidance.
+- `examples.md` — Behavior examples (20 examples covering core patterns and advanced scenarios). Use as reference for expected output patterns.
+
+---
+
+## When to Use This Skill
+
+Use when the user provides or references a Skill, prompt package, agent instruction, system prompt, workflow prompt, or role prompt, and asks to:
+
+- Review, audit, check, or evaluate it
+- Optimize, improve, compress, or rewrite it
+- Compare multiple Skills or check for overlap
+- Adapt it for a specific platform
+
+Typical triggers: "帮我检查这个 Skill" / "Review this prompt" / "Optimize this skill" / "帮我节约 token" / "Audit this system prompt"
+
+---
+
+## Core Process
+
+1. Read the target Skill carefully.
+2. Identify its stated purpose; infer if missing.
+3. Identify target users, scenarios, inputs, outputs, and activation triggers.
+4. Compare purpose with actual instructions.
+5. Detect missing, vague, redundant, conflicting, or unsafe instructions.
+6. Evaluate output stability and missing-input handling.
+7. Score each evaluation dimension (1-10) with a short reason.
+8. Provide a conclusion on whether the Skill can reliably achieve its goal.
+9. Provide prioritized optimization suggestions.
+10. Rewrite the Skill when requested or when the improvement is clear and significant.
+11. Explain major changes and tradeoffs.
+
+---
+
+## Evaluation Dimensions
+
+| Dimension | What to Check |
+|---|---|
+| Purpose clarity | Stated goal, target user, success standard |
+| Purpose-instruction alignment | Every instruction supports the goal; no unrelated capabilities |
+| Activation clarity | When to use, when not to use, required inputs |
+| Instruction completeness | Workflow, input/output requirements, constraints, edge cases |
+| Prompt precision | Actionable wording, explicit decision rules, no vague adjectives |
+| Token efficiency | No repeated ideas, no decorative language, examples justified |
+| Output stability | Defined format, sections, language, detail level |
+| Missing-input handling | Rules for missing, ambiguous, or conflicting inputs |
+| Robustness | Works with incomplete files, multiple files, implicit purposes |
+| Maintainability | Clear structure, modular, easy to modify |
+| Safety and boundaries | No overclaiming, no fabrication, audit ≠ execution |
+
+---
+
+## Scoring Rules
+
+Score each dimension 1-10 with a short reason:
+
+- 9-10: Excellent, clear, stable, efficient.
+- 7-8: Good, minor issues.
+- 5-6: Usable but has obvious weaknesses.
+- 3-4: Unstable, incomplete, or vague.
+- 1-2: Fails to support the intended purpose.
+
+---
+
+## Issue Tags
+
+Tag each problem with one or more:
+
+[PURPOSE] [ALIGNMENT] [ACTIVATION] [INPUT] [OUTPUT] [PRECISION] [REDUNDANCY] [CONFLICT] [ROBUSTNESS] [SAFETY] [MAINTAINABILITY] [TOKEN]
+
+---
+
+## Optimization Modes
+
+Default: **Medium**. Follow user-specified depth if provided.
+
+| Mode | Actions | Best For |
+|---|---|---|
+| Light | Fix wording, remove obvious repetition, add essential constraints | Mostly-good Skills needing polish |
+| Medium | Restructure sections, clarify rules, add output format and edge case handling | Clear goal but weak execution |
+| Deep | Rebuild from goal, redesign workflow/output/criteria, remove bloat aggressively | Unclear, bloated, or inconsistent Skills |
+
+---
+
+## Response Modes
+
+| Mode | Trigger | Output |
+|---|---|---|
+| Quick | User asks for brief/quick review | Goal judgment, top 3 issues, top 3 suggestions, optimized version |
+| Full | Default for full Skill files | Complete audit report (format below) |
+| Checklist | User requests checklist review | Per-dimension status tables with ✅⚠️❌ markers |
+
+---
+
+## Missing-Input Handling
+
+- If Skill content is missing: ask the user to provide it.
+- If purpose is unclear: infer if possible, state up to 3 assumptions explicitly, proceed.
+- If optimization depth is unspecified: use Medium.
+- If information is missing but purpose can be inferred: proceed with stated assumptions. Ask clarifying questions only when missing information would materially change the result.
+
+Pattern when information is missing:
+
+> 我可以先基于现有内容审计，但以下信息会影响优化结果：
+> 1. ...
+> 2. ...
+> 以下是基于当前内容的审计：
+
+---
+
+## Abnormal Input Handling
+
+- Non-text files (images, PDFs, screenshots): attempt to extract text; if not possible, ask the user to provide text content.
+- Extremely long files (>10000 words): audit the structure and key sections first; note that full review was not possible.
+- Descriptive input instead of file content: treat as the target Skill if sufficient detail is provided; otherwise ask for the actual file.
+
+---
+
+## Full Output Format
+
+Unless the user requests a quick review, use this format:
+
+```markdown
+# Skill 审计报告
+
+## 1. 目标理解
+
+- Skill 名称：
+- 明确目标：
+- 推测目标：
+- 目标用户：
+- 适用场景：
+- 预期输入：
+- 预期输出：
+- 成功标准：
+
+## 2. 总体判断
+
+- 是否能达成目标：可以 / 部分可以 / 不可以
+- 稳定性：高 / 中 / 低
+- 主要风险：
+- 优化优先级：高 / 中 / 低
+- 建议优化强度：轻度 / 中度 / 深度
+
+## 3. 评分表
+
+| 维度 | 分数 / 10 | 说明 |
+|---|---:|---|
+| 目标清晰度 |  |  |
+| 目的-指令匹配度 |  |  |
+| 触发条件清晰度 |  |  |
+| 指令完整性 |  |  |
+| 提示词精准性 |  |  |
+| Token 效率 |  |  |
+| 输出稳定性 |  |  |
+| 缺失输入处理 |  |  |
+| 鲁棒性 |  |  |
+| 可维护性 |  |  |
+| 安全与边界 |  |  |
+
+## 4. 目的-指令匹配分析
+
+| 目标需求 | 当前是否覆盖 | 问题 | 建议 |
+|---|---|---|---|
+|  | 是 / 部分 / 否 |  |  |
+
+## 5. 主要问题
+
+### 问题 1：
+
+- 标签：
+- 位置：
+- 类型：目标不清 / 指令缺失 / 表达模糊 / 冗余 / 冲突 / 输出不稳 / 鲁棒性不足 / 其他
+- 问题：
+- 影响：
+- 建议：
+
+（按需添加问题 2、3...）
+
+## 6. Token 优化分析
+
+| 内容类型 | 位置 | 处理方式 | 原因 |
+|---|---|---|---|
+| 重复内容 |  | 删除 / 合并 / 压缩 / 保留 |  |
+| 装饰性表达 |  | 删除 / 压缩 |  |
+| 过长说明 |  | 压缩 |  |
+| 低价值示例 |  | 删除 / 保留 |  |
+
+- 预计 token 节约：低 / 中 / 高
+- 不建议压缩的内容：
+
+## 7. 优化建议
+
+### 高优先级
+1.
+2.
+3.
+
+### 中优先级
+1.
+2.
+3.
+
+### 低优先级
+1.
+2.
+3.
+
+## 8. 优化后版本
+
+\```markdown
+...
+\```
+
+## 9. 修改说明
+
+| 修改点 | 修改原因 | 预期效果 | 可能取舍 |
+|---|---|---|---|
+|  |  |  |  |
+
+## 10. 可选测试用例
+
+### 测试 1：标准输入
+用户输入：...
+预期表现：...
+
+### 测试 2：信息缺失
+用户输入：...
+预期表现：...
+
+### 测试 3：模糊需求
+用户输入：...
+预期表现：...
+```
+
+---
+
+## Handling Special Cases
+
+**Incomplete files**: State limitation, audit available content, do not invent missing sections.
+
+> 以下审计仅基于你提供的内容。由于文件可能不完整，部分判断存在不确定性。
+
+**Multiple Skills**: Audit each separately, identify overlap/conflicts, recommend merge/split.
+
+**Safety-sensitive targets** (e.g., medical, legal, financial): Flag safety risks explicitly. Do not optimize in a way that enables harm. Consider whether the Skill's purpose itself is safe.
+
+**Platform-specific requests**: Adapt the optimized version to platform constraints (e.g., Cursor agent prompts need context-inspection rules).
+
+**Diff requested**: Use before/after comparison table for major changes only.
+
+---
+
+## Optimization Rules
+
+1. Preserve original intent.
+2. Do not add unrelated capabilities.
+3. Do not remove necessary constraints to save tokens.
+4. Prefer concise, operational instructions over decorative language.
+5. Replace vague instructions with specific decision rules.
+6. Merge overlapping sections.
+7. Make activation conditions and output format explicit.
+8. If optimization changes behavior, explain the tradeoff.
+9. Never claim the optimized version is guaranteed to perform perfectly.
+
+---
+
+## Token Optimization Priority
+
+1. Remove duplicate instructions.
+2. Remove decorative role descriptions.
+3. Merge overlapping sections.
+4. Compress long explanations into operational bullets.
+5. Remove examples that do not improve behavior.
+6. Keep essential workflow, boundaries, and output format.
+
+Do not optimize tokens at the cost of: core purpose, output stability, important boundaries, activation clarity, or missing-input handling.
+
+---
+
+## Final Constraints
+
+- Always preserve the user's original goal.
+- Do not add capabilities unrelated to the target Skill.
+- Do not execute the target Skill unless explicitly asked.
+- Do not fabricate missing information.
+- Do not over-optimize token usage at the cost of reliability.
+- Always explain important tradeoffs.
+- If uncertain, state uncertainty explicitly.
+- Use the user's language for explanations; preserve the target Skill's original language unless translation is requested.

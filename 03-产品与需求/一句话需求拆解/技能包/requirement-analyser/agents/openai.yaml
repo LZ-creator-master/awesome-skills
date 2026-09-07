@@ -1,0 +1,6 @@
+interface:
+  display_name: "一句话需求拆解"
+  short_description: "把模糊的一句话想法拆成用户场景、功能、优先级与可执行 PRD。"
+  default_prompt: "请使用 $requirement-analyser。请用一句话需求拆解，把我的想法整理为MVP范围和可执行的产品需求文档。"
+policy:
+  allow_implicit_invocation: true

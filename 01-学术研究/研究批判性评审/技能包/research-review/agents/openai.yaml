@@ -1,0 +1,6 @@
+interface:
+  display_name: "研究批判性评审"
+  short_description: "审查研究主张、方法和实验，形成可执行的补充实验、论证和修订建议。"
+  default_prompt: "请使用 $research-review。请用研究批判性评审，检查我的研究证据能否支持结论，并列出优先补充的实验。"
+policy:
+  allow_implicit_invocation: true

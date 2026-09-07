@@ -1,0 +1,6 @@
+interface:
+  display_name: "论文深度解读"
+  short_description: "把论文的创新、方法、公式、实验和局限讲清楚，生成便于分享的深度 HTML 长文。"
+  default_prompt: "请使用 $paper-analyzer。请用论文深度解读，以学术型风格分析这篇论文，生成中文网页。"
+policy:
+  allow_implicit_invocation: true

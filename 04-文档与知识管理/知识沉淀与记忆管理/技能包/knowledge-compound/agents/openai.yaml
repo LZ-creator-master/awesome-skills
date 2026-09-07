@@ -1,0 +1,6 @@
+interface:
+  display_name: "知识沉淀与记忆管理"
+  short_description: "将项目背景、偏好、决策和经验整理成可查看、可更新的本地知识记录。"
+  default_prompt: "请使用 $knowledge-compound。请用知识沉淀与记忆管理，把今天的关键决策和经验整理到当前项目的知识档案中。"
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "论文视觉幻灯片"
+  short_description: "先设计叙事和逐页画面，再生成整页图像并合成论文汇报 PPTX 或 PDF。"
+  default_prompt: "请使用 $paper-deck。请用论文视觉幻灯片，把这篇论文制作成10页中文组会汇报，使用简洁学术风格。"
+policy:
+  allow_implicit_invocation: true

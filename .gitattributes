@@ -1,0 +1,5 @@
+* text=auto eol=lf
+# Keep supplied source bytes intact for provenance hashes.
+**/references/原始说明.txt -text
+*.png binary
+*.zip binary

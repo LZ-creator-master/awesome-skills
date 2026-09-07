@@ -1,0 +1,6 @@
+interface:
+  display_name: "分层需求细化与追踪"
+  short_description: "按目标到细节逐层拆解复杂需求，建立需求编号、决策记录和双向追踪。"
+  default_prompt: "请使用 $requirements-fractal。请用分层需求细化与追踪，将这份需求拆到可验收层级，并建立需求追踪矩阵。"
+policy:
+  allow_implicit_invocation: true

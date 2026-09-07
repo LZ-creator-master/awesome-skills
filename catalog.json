@@ -1,0 +1,345 @@
+{
+  "schema_version": 1,
+  "skills": [
+    {
+      "id": "academic-pipeline",
+      "name": "学术论文全流程",
+      "category": "01-学术研究",
+      "core": "统筹选题、研究、写作、核验、评审、修订和定稿，适合从研究到论文的完整任务。",
+      "input": "研究主题、已有文献或论文初稿",
+      "output": "阶段计划、论文各版本、核验清单、评审回复和过程记录",
+      "example": "请用学术论文全流程，帮我把这个研究主题推进到论文初稿和评审修订。",
+      "status": "流程适配；原版完整系统缺失",
+      "limitations": "缺少 academic-paper、academic-paper-reviewer，以及 agents、shared、references、templates、examples 配套文件；本包不能复现原版多智能体、护照恢复和自动审计机制。",
+      "source": "Academic Pipeline.md",
+      "folder": "01-学术研究/学术论文全流程",
+      "package": "01-学术研究/学术论文全流程/技能包/academic-pipeline",
+      "original_sha256": "615a678fa89ec7ddd865d27637d39d0d8eddcd7852b6bdd89d18873cb16a644f",
+      "files": {
+        "SKILL.md": "1545f88e0c00bc203937d1ceb90917bca3e4cfeeb051c1f9b5fc3fac99420f37",
+        "agents/openai.yaml": "113d80c95a099509ad04918e1ccbecd6ad22f9ae35f671d1cc50bb4e5d10d54d",
+        "references/原始说明.txt": "615a678fa89ec7ddd865d27637d39d0d8eddcd7852b6bdd89d18873cb16a644f"
+      }
+    },
+    {
+      "id": "paper-analyzer",
+      "name": "论文深度解读",
+      "category": "01-学术研究",
+      "core": "把论文的创新、方法、公式、实验和局限讲清楚，生成便于分享的深度 HTML 长文。",
+      "input": "论文链接、PDF 或全文",
+      "output": "深度解读网页、来源和代码对应说明",
+      "example": "请用论文深度解读，以学术型风格分析这篇论文，生成中文网页。",
+      "status": "方法可用；缺补充模板",
+      "limitations": "缺少 styles 下五份风格规范与 scripts/generate_html.py；原文已经包含三种风格要求及 HTML 示例，可使用实际可用工具生成网页。",
+      "source": "paper-analyzer.md.md",
+      "folder": "01-学术研究/论文深度解读",
+      "package": "01-学术研究/论文深度解读/技能包/paper-analyzer",
+      "original_sha256": "8b85194d352eb3f33f3da1ab74a4299234d7db889f75c52d6f039cc5de6b38a8",
+      "files": {
+        "SKILL.md": "72c45768ae213e30af58777bf41163b193551504b7cba36ace3d843b193e550f",
+        "agents/openai.yaml": "2d2b4394a5938e437c7ae574723752704948305d8f6a933c3e43f7f1fcc9bcaa",
+        "references/原始说明.txt": "8b85194d352eb3f33f3da1ab74a4299234d7db889f75c52d6f039cc5de6b38a8"
+      }
+    },
+    {
+      "id": "paper-analysis-assistant",
+      "name": "论文多格式分析助手",
+      "category": "01-学术研究",
+      "core": "从同一篇论文整理文字、词频、引用、网页、幻灯片和播客等多种交付物。",
+      "input": "arXiv 链接或论文 PDF；所需输出清单",
+      "output": "分析摘要、词频表、引用表及所选媒体文件",
+      "example": "请用论文多格式分析助手，输出这篇论文的摘要、引用表和双人播客脚本。",
+      "status": "需媒体工具；原版脚本缺失",
+      "limitations": "原文所列下载、提取、词频、语音、播客、HTML、PPT、引用脚本和 stopwords.txt 均未提供；采用当前可用能力逐项完成，不保证原版批处理链。",
+      "source": "paper-analysis-assistant.md",
+      "folder": "01-学术研究/论文多格式分析助手",
+      "package": "01-学术研究/论文多格式分析助手/技能包/paper-analysis-assistant",
+      "original_sha256": "252865ed82c95b4573ce2c45e595c27224a869142a212e952e33034b04be7c1c",
+      "files": {
+        "SKILL.md": "faa9bf2cbc0e08a073a84c5ce8b6d46be5726ef8d3c3b4d85b4aa804fb9ff105",
+        "agents/openai.yaml": "4ff03dba36ee60d1956e0f423e7579a4b0138726191892a08450892c5056373e",
+        "references/原始说明.txt": "252865ed82c95b4573ce2c45e595c27224a869142a212e952e33034b04be7c1c"
+      }
+    },
+    {
+      "id": "research-review",
+      "name": "研究批判性评审",
+      "category": "01-学术研究",
+      "core": "审查研究主张、方法和实验，形成可执行的补充实验、论证和修订建议。",
+      "input": "研究说明、论文、实验结果或评审意见",
+      "output": "评审报告、结果与主张矩阵、优先改进计划",
+      "example": "请用研究批判性评审，检查我的研究证据能否支持结论，并列出优先补充的实验。",
+      "status": "本地评审可用；外部复核有条件",
+      "limitations": "原版依赖 Claude Code 中的 Codex MCP 工具；当前未发现这些工具。可做本地批判性评审，不能宣称已完成外部独立模型复核。",
+      "source": "research-review.md",
+      "folder": "01-学术研究/研究批判性评审",
+      "package": "01-学术研究/研究批判性评审/技能包/research-review",
+      "original_sha256": "40183a94df751dd9874bd6f8278d5c51001aee89b48729cb64af9fa7bc3ec7f5",
+      "files": {
+        "SKILL.md": "7c9227c9eec21067eb976edbd8426eb129ca7c7356940a5a58fe408602f14925",
+        "agents/openai.yaml": "0a3acb97375898e4f2630eaac445ea40451d63ddf331f41d996988a4f2c7d973",
+        "references/原始说明.txt": "40183a94df751dd9874bd6f8278d5c51001aee89b48729cb64af9fa7bc3ec7f5"
+      }
+    },
+    {
+      "id": "paper-deaiify",
+      "name": "论文自然表达润色",
+      "category": "01-学术研究",
+      "core": "减少论文套话、翻译腔和机械句式，保留原意、数据、术语及引用。",
+      "input": "用户已有论文段落、Word、PDF 或文本",
+      "output": "润色稿、重要修改说明与待核实处",
+      "example": "请用论文自然表达润色，修改下面的段落，保留全部数据、术语和引用。",
+      "status": "文本方法可用；已修正不实承诺",
+      "limitations": "缺少词汇、句式、学科参考表和检测脚本；已取消“检测率低于15%”等无法保证的承诺，并纠正示例中凭空添加调研经历的做法。",
+      "source": "paper-deaiify.md",
+      "folder": "01-学术研究/论文自然表达润色",
+      "package": "01-学术研究/论文自然表达润色/技能包/paper-deaiify",
+      "original_sha256": "7afbe2caacfdbab03c652e36a1fcc11f77d441b364773287c489457c5dd30f16",
+      "files": {
+        "SKILL.md": "60bb9c888945995d30acec02ff1e6119764f4efe43c9e7f453285de7949bc70e",
+        "agents/openai.yaml": "184b7945ba849140a417ac01d1db19a8d86c40148f3cd947558f375abd4211bd",
+        "references/原始说明.txt": "7afbe2caacfdbab03c652e36a1fcc11f77d441b364773287c489457c5dd30f16"
+      }
+    },
+    {
+      "id": "paper-comic",
+      "name": "论文方法图解",
+      "category": "02-演示与内容创作",
+      "core": "用方法总览、核心机制和关键结果图，解释论文具体怎么做。",
+      "input": "论文全文、目标用途、图片数量或范围",
+      "output": "方法图、机制图、图解说明和来源",
+      "example": "请用论文方法图解，生成一张中文科研笔记风的方法总览图。",
+      "status": "可用；需图像生成工具",
+      "limitations": "缺少三份参考规范，但原文已给出两种画风、逐页结构和质量标准；生成图片需要当前图像工具。",
+      "source": "paper-comic.md",
+      "folder": "02-演示与内容创作/论文方法图解",
+      "package": "02-演示与内容创作/论文方法图解/技能包/paper-comic",
+      "original_sha256": "8a53758b8619cb0f6b90c9c47813053cb1f2750d1773e34c1e40289accf691e3",
+      "files": {
+        "SKILL.md": "d0e5e18b0dddb7644867a07681125261a4e641b30823b61d7bcc053d28b76a91",
+        "agents/openai.yaml": "8fca46c7cc0f1ef44d89bda18e94721f2f8cbdb3ff9e9f7acd458c81800a9bfc",
+        "references/原始说明.txt": "8a53758b8619cb0f6b90c9c47813053cb1f2750d1773e34c1e40289accf691e3"
+      }
+    },
+    {
+      "id": "paper-deck",
+      "name": "论文视觉幻灯片",
+      "category": "02-演示与内容创作",
+      "core": "先设计叙事和逐页画面，再生成整页图像并合成论文汇报 PPTX 或 PDF。",
+      "input": "论文、技术文章、汇报大纲或参考图",
+      "output": "逐页大纲、生成提示词、幻灯片图片、PPTX 或 PDF",
+      "example": "请用论文视觉幻灯片，把这篇论文制作成10页中文组会汇报，使用简洁学术风格。",
+      "status": "可用；需图像与幻灯片工具",
+      "limitations": "缺少 merge_deck.py 及六份参考规范；可用现有演示文稿和 PDF 能力合成。整页图像式 PPTX 不等于可逐字编辑的 PPTX。",
+      "source": "paper-deck.md",
+      "folder": "02-演示与内容创作/论文视觉幻灯片",
+      "package": "02-演示与内容创作/论文视觉幻灯片/技能包/paper-deck",
+      "original_sha256": "4bd1aa59876c6a088942aeb9a410ab8af8192a82d0d5eac703e6d707a5114d39",
+      "files": {
+        "SKILL.md": "7c24f9c752112524a214228183a41343a5f69f1829d6d123459641577ef11fdb",
+        "agents/openai.yaml": "f97cfae7ade6d7065be964f67e32b55286859bccb64c674f9a3b4f9443817317",
+        "references/原始说明.txt": "4bd1aa59876c6a088942aeb9a410ab8af8192a82d0d5eac703e6d707a5114d39"
+      }
+    },
+    {
+      "id": "nanobanana-ppt-visualizer",
+      "name": "幻灯片视觉增强与播放",
+      "category": "02-演示与内容创作",
+      "core": "为已有幻灯片内容生成统一视觉素材、浏览器播放器，按需合成视频。",
+      "input": "幻灯片逐页内容、JSON 或已有图片",
+      "output": "页面图片、HTML 播放器、可选 MP4",
+      "example": "请用幻灯片视觉增强与播放，把这些逐页内容做成带键盘翻页的中文演示。",
+      "status": "部分功能需配套工具",
+      "limitations": "缺少播放器、素材管理、视频合成脚本、风格模板和 ppt-generator；视频合成需要 FFmpeg 或其他可用视频工具，可灵接口未配置。",
+      "source": "nanobanana-ppt-visualizer.md",
+      "folder": "02-演示与内容创作/幻灯片视觉增强与播放",
+      "package": "02-演示与内容创作/幻灯片视觉增强与播放/技能包/nanobanana-ppt-visualizer",
+      "original_sha256": "b7765560ebf3f76f971b56e788fcc6b0562ddc1d4cb8d22952857ce8612ccfac",
+      "files": {
+        "SKILL.md": "604d66ba86e505f81375002444b693e2a4cf3af6295d4e0126630477120e4fcd",
+        "agents/openai.yaml": "b536dbf294fba9ea88e259b31a42b8c4ec95f920bbe5001cf62743570eb0edb5",
+        "references/原始说明.txt": "b7765560ebf3f76f971b56e788fcc6b0562ddc1d4cb8d22952857ce8612ccfac"
+      }
+    },
+    {
+      "id": "content-creator-skill-scarfbro",
+      "name": "围巾哥内容创作套件",
+      "category": "02-演示与内容创作",
+      "core": "将录音、演讲稿或文章改编为演示、访谈、封面或分章书稿。",
+      "input": "音频、文字稿、文章、主题或既有幻灯片",
+      "output": "所选演示、访谈脚本或音频、封面、书稿",
+      "example": "请用围巾哥内容创作套件，把这份演讲稿改成网页演示和一张16:9封面。",
+      "status": "文本可用；媒体依赖当前工具",
+      "limitations": "保留原作者署名；缺少三份参考指南和五个辅助脚本。语音、图像、PPTX、Word 由实际可用工具完成，不承诺自动达到出版质量。",
+      "source": "content-creator-skill-scarfbro.md",
+      "folder": "02-演示与内容创作/围巾哥内容创作套件",
+      "package": "02-演示与内容创作/围巾哥内容创作套件/技能包/content-creator-skill-scarfbro",
+      "original_sha256": "9526008b9ddd8eb67a8723df798bdd1fbd917ab1e6fa140ef739c1931cce1e98",
+      "files": {
+        "SKILL.md": "375774da886ad5a4e8eaac7f3da73800b4bfbc1077b0b1600a4486bffa510e98",
+        "agents/openai.yaml": "4e08ebe89134a1cc60ce93a4af7becac7b55bd379db7c83e50911c6163effac5",
+        "references/原始说明.txt": "9526008b9ddd8eb67a8723df798bdd1fbd917ab1e6fa140ef739c1931cce1e98"
+      }
+    },
+    {
+      "id": "requirement-analyser",
+      "name": "一句话需求拆解",
+      "category": "03-产品与需求",
+      "core": "把模糊的一句话想法拆成用户场景、功能、优先级与可执行 PRD。",
+      "input": "初步产品想法、目标用户和约束",
+      "output": "需求故事、产品需求文档与验收标准",
+      "example": "请用一句话需求拆解，把我的想法整理为MVP范围和可执行的产品需求文档。",
+      "status": "文本方法可用；已适配平台",
+      "limitations": "原版面向 Trae Solo；已改用当前环境的文档和分析能力，移除所有任务优先触发及自动开始开发的要求。",
+      "source": "requirement-analyser.md",
+      "folder": "03-产品与需求/一句话需求拆解",
+      "package": "03-产品与需求/一句话需求拆解/技能包/requirement-analyser",
+      "original_sha256": "bc3f2fc5b6098e3d307b889d3efb451a00d037ac4e150627786caeb151df4575",
+      "files": {
+        "SKILL.md": "eee95cb4bf640e87f058d0b84fcdbfe66dcb28d817e184857ebea8ad6934e8bf",
+        "agents/openai.yaml": "99fb818bd110173935ce9cbe90829159343c38cfc17ab9a09ccbe2f6a447da55",
+        "references/原始说明.txt": "bc3f2fc5b6098e3d307b889d3efb451a00d037ac4e150627786caeb151df4575"
+      }
+    },
+    {
+      "id": "requirements-fractal",
+      "name": "分层需求细化与追踪",
+      "category": "03-产品与需求",
+      "core": "按目标到细节逐层拆解复杂需求，建立需求编号、决策记录和双向追踪。",
+      "input": "复杂产品想法、初步PRD或功能模块",
+      "output": "分层需求规格、需求追踪矩阵与验收清单",
+      "example": "请用分层需求细化与追踪，将这份需求拆到可验收层级，并建立需求追踪矩阵。",
+      "status": "方法可用；原版配套缺失",
+      "limitations": "缺少三份模板与验证参考，以及原文列举的上下游技能；用本文内置输出结构和当前可用能力完成。",
+      "source": "requirements-fractal.md",
+      "folder": "03-产品与需求/分层需求细化与追踪",
+      "package": "03-产品与需求/分层需求细化与追踪/技能包/requirements-fractal",
+      "original_sha256": "af357b25eeb2c20c9e10d8500287222a722bae350ef3225cbaadfbfc84b775cb",
+      "files": {
+        "SKILL.md": "2001f437e5ae12f1490270fbf9311e899d5fbabdd045e1e5ce4632dba1cdf738",
+        "agents/openai.yaml": "aa802262ac751ac90708f600c366b59c2951585494a8b91335ea1c641df09332",
+        "references/原始说明.txt": "af357b25eeb2c20c9e10d8500287222a722bae350ef3225cbaadfbfc84b775cb"
+      }
+    },
+    {
+      "id": "prd-bomb-detector",
+      "name": "产品需求风险排查",
+      "category": "03-产品与需求",
+      "core": "检查已有PRD中的矛盾、遗漏、优先级冲突、隐含假设和技术问题。",
+      "input": "已有PRD、相关范围说明或引用材料",
+      "output": "带证据位置、严重程度和修复建议的诊断报告",
+      "example": "请用产品需求风险排查，检查这份PRD的矛盾、遗漏场景和高风险假设。",
+      "status": "文本方法可用；已修正评分边界",
+      "limitations": "缺少结构模板和分析框架文件；原文经验评分不能当作经验证的概率或行业标准，已有正文可支撑分析。",
+      "source": "prd-bomb-detector.md",
+      "folder": "03-产品与需求/产品需求风险排查",
+      "package": "03-产品与需求/产品需求风险排查/技能包/prd-bomb-detector",
+      "original_sha256": "24780ef97c7051a7389f791330cf4f2da02ca17c4ca4b9703be934816b23a578",
+      "files": {
+        "SKILL.md": "daa7b29c2cfbbbb21158e052d9af0866846a0287f1ea4fef81ede66fcdf49a9b",
+        "agents/openai.yaml": "8a3bbda1929a40713b9bbdb7e30f1eca569370fb1db9b18ac1fbeeea4f77b251",
+        "references/原始说明.txt": "24780ef97c7051a7389f791330cf4f2da02ca17c4ca4b9703be934816b23a578"
+      }
+    },
+    {
+      "id": "doc-format-checker",
+      "name": "文档格式审核与修正",
+      "category": "04-文档与知识管理",
+      "core": "读取Word版式，审核或修正标题、图表、字体、间距及术语，并记录修改。",
+      "input": "Word文件、格式规范、审核或修改范围",
+      "output": "审核报告、修改后的Word与变更记录",
+      "example": "请用文档格式审核与修正，按这份规范检查Word，输出修改稿和变更报告。",
+      "status": "可用；需文档工具，原版脚本缺失",
+      "limitations": "缺少五个脚本和格式配置；当前文档工具可替代。已纠正“跨run空格必不显示、必须合并run”的不准确规则，精确页码必须经渲染核对。",
+      "source": "doc-format-checker.md",
+      "folder": "04-文档与知识管理/文档格式审核与修正",
+      "package": "04-文档与知识管理/文档格式审核与修正/技能包/doc-format-checker",
+      "original_sha256": "6cc64e77c22cf58cc0a87d523600f890b69d844eb79b81f0462917a87a27520a",
+      "files": {
+        "SKILL.md": "bc8e8d3e483d6288a4c65f29efceff4a50f3e0750b17717d3726c7c7da713e15",
+        "agents/openai.yaml": "d9f6f7f5265f4e070cd06bf1cbd2e1efd41b770e30fac667d7fc8edeea00e532",
+        "references/原始说明.txt": "6cc64e77c22cf58cc0a87d523600f890b69d844eb79b81f0462917a87a27520a"
+      }
+    },
+    {
+      "id": "knowledge-compound",
+      "name": "知识沉淀与记忆管理",
+      "category": "04-文档与知识管理",
+      "core": "将项目背景、偏好、决策和经验整理成可查看、可更新的本地知识记录。",
+      "input": "用户要求记住的信息、项目记录或经验",
+      "output": "本地知识档案、决策记录、经验条目与总结",
+      "example": "请用知识沉淀与记忆管理，把今天的关键决策和经验整理到当前项目的知识档案中。",
+      "status": "文件记忆适配；不等于系统记忆",
+      "limitations": "原版 memory_bank.py 未提供；使用项目内可读文件代替，不承诺全会话自动加载、后台常驻或修改平台原生记忆。",
+      "source": "knowledge-compound.md",
+      "folder": "04-文档与知识管理/知识沉淀与记忆管理",
+      "package": "04-文档与知识管理/知识沉淀与记忆管理/技能包/knowledge-compound",
+      "original_sha256": "ed15a896c4034f91938b0e24914b0fc9394d8b637fb01356a87a97b0087fb7e5",
+      "files": {
+        "SKILL.md": "87ba449c8b1be837ba9c0fd3fc4fa4c90739293b43712abf17aa705c35bd1976",
+        "agents/openai.yaml": "e477e1b543e8260cf5bf6e5b295ffb6c766ba9d5952c53a914ae57ae0437ea2b",
+        "references/原始说明.txt": "ed15a896c4034f91938b0e24914b0fc9394d8b637fb01356a87a97b0087fb7e5"
+      }
+    },
+    {
+      "id": "skill-auditor",
+      "name": "技能审查与优化",
+      "category": "05-技能管理",
+      "core": "核查技能目标、触发条件、指令、边界与冗余，并给出可维护的优化版本。",
+      "input": "技能说明、提示词或多个候选技能",
+      "output": "审查结论、问题清单、优化稿与修改说明",
+      "example": "请用技能审查与优化，检查这个技能是否能实现目标，并给出精简但可靠的版本。",
+      "status": "文本方法可用",
+      "limitations": "原文无标准入口信息，缺少checklist.md和examples.md；已补入口和中文使用说明，正文包含足够的审查框架。",
+      "source": "Skill Auditor.md",
+      "folder": "05-技能管理/技能审查与优化",
+      "package": "05-技能管理/技能审查与优化/技能包/skill-auditor",
+      "original_sha256": "2f926206eaff53a3c71fd4b2e0fbcb9473a09a25e6789c183ebf1f7b600484b1",
+      "files": {
+        "SKILL.md": "674d3ce6aef6a70b3c1c2d08d5ada0ebe9199ea3e610514d9e42877dc3ace493",
+        "agents/openai.yaml": "f03bd3215452aabe84f75fdf97a9e74685d010e9bc20bff5709ec0e21cf1f00e",
+        "references/原始说明.txt": "2f926206eaff53a3c71fd4b2e0fbcb9473a09a25e6789c183ebf1f7b600484b1"
+      }
+    },
+    {
+      "id": "skill-selector",
+      "name": "技能选择助手",
+      "category": "05-技能管理",
+      "core": "根据当前任务，从真正可用的技能中推荐最合适的选项与组合。",
+      "input": "任务描述或技能选择疑问",
+      "output": "简短推荐、适用理由与调用示例",
+      "example": "请用技能选择助手，推荐适合把论文做成组会汇报的已有技能。",
+      "status": "文本方法可用",
+      "limitations": "不再假定find-skills已安装；新技能发现和安装使用当前实际可用的安装或插件管理能力。",
+      "source": "skill-selector.md",
+      "folder": "05-技能管理/技能选择助手",
+      "package": "05-技能管理/技能选择助手/技能包/skill-selector",
+      "original_sha256": "6aa8d285f71db5e765e4597cb803c36dc1319cd4d81ab87059e3b7ae092eb144",
+      "files": {
+        "SKILL.md": "89b800a123d001329ec5ec27402be45c66345a75d7d5b1fa79e99498ba491cc7",
+        "agents/openai.yaml": "c60ff23f1530263675922dbb9922c29f2f13c628be5a8d895f1003d1856b3d57",
+        "references/原始说明.txt": "6aa8d285f71db5e765e4597cb803c36dc1319cd4d81ab87059e3b7ae092eb144"
+      }
+    },
+    {
+      "id": "playful-companion",
+      "name": "小恶魔女友",
+      "category": "06-互动风格",
+      "core": "在用户要求时使用轻松、俏皮的成年虚构角色语气聊天。",
+      "input": "用户希望采用的角色风格和聊天主题",
+      "output": "俏皮自然的角色互动；工作文件仍保持正常内容",
+      "example": "请用小恶魔女友的俏皮语气陪我聊一会儿，需要工作时正常处理。",
+      "status": "已适配为成年角色与限定场景",
+      "limitations": "缺少四份角色参考；已移除强制接管所有任务、拒绝退出、隐瞒身份、强制污染文件的要求，角色明确为成年人。",
+      "source": "小恶魔女友.md",
+      "folder": "06-互动风格/小恶魔女友",
+      "package": "06-互动风格/小恶魔女友/技能包/playful-companion",
+      "original_sha256": "ec1b8abfc07452e7a0db6421780eb9e4cc43b14ce6f72eebefb7dccf8278483f",
+      "files": {
+        "SKILL.md": "42532feb2266b681f5ebd935d62c520f7fbb483f65de94a62fb6dca6696ed30b",
+        "agents/openai.yaml": "5dbab122725ff3015d328ba6ee843a4510bd2132285bb8f4c43d02bb97bb4eb4",
+        "references/原始说明.txt": "ec1b8abfc07452e7a0db6421780eb9e4cc43b14ce6f72eebefb7dccf8278483f"
+      }
+    }
+  ]
+}

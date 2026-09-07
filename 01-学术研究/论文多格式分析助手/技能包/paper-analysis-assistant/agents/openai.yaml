@@ -1,0 +1,6 @@
+interface:
+  display_name: "论文多格式分析助手"
+  short_description: "从同一篇论文整理文字、词频、引用、网页、幻灯片和播客等多种交付物。"
+  default_prompt: "请使用 $paper-analysis-assistant。请用论文多格式分析助手，输出这篇论文的摘要、引用表和双人播客脚本。"
+policy:
+  allow_implicit_invocation: true

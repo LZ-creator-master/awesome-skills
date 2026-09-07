@@ -1,0 +1,6 @@
+interface:
+  display_name: "技能审查与优化"
+  short_description: "核查技能目标、触发条件、指令、边界与冗余，并给出可维护的优化版本。"
+  default_prompt: "请使用 $skill-auditor。请用技能审查与优化，检查这个技能是否能实现目标，并给出精简但可靠的版本。"
+policy:
+  allow_implicit_invocation: true

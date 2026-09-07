@@ -1,0 +1,20 @@
+# Local-only history and backups
+/99-维护记录/
+/90-原始备份/
+/80-可迁移安装包/
+**/原始说明.md
+
+# Generated archives and local environments
+/dist/
+/.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+Thumbs.db
+desktop.ini
+.env
+.env.*
+!.env.example
+*.pem
+*.key

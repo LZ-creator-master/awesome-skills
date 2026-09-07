@@ -1,0 +1,6 @@
+interface:
+  display_name: "论文自然表达润色"
+  short_description: "减少论文套话、翻译腔和机械句式，保留原意、数据、术语及引用。"
+  default_prompt: "请使用 $paper-deaiify。请用论文自然表达润色，修改下面的段落，保留全部数据、术语和引用。"
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "围巾哥内容创作套件"
+  short_description: "将录音、演讲稿或文章改编为演示、访谈、封面或分章书稿。"
+  default_prompt: "请使用 $content-creator-skill-scarfbro。请用围巾哥内容创作套件，把这份演讲稿改成网页演示和一张16:9封面。"
+policy:
+  allow_implicit_invocation: true

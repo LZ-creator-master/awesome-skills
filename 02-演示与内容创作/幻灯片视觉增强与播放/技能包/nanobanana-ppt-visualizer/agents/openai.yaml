@@ -1,0 +1,6 @@
+interface:
+  display_name: "幻灯片视觉增强与播放"
+  short_description: "为已有幻灯片内容生成统一视觉素材、浏览器播放器，按需合成视频。"
+  default_prompt: "请使用 $nanobanana-ppt-visualizer。请用幻灯片视觉增强与播放，把这些逐页内容做成带键盘翻页的中文演示。"
+policy:
+  allow_implicit_invocation: true

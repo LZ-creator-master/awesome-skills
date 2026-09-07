@@ -1,0 +1,6 @@
+interface:
+  display_name: "论文方法图解"
+  short_description: "用方法总览、核心机制和关键结果图，解释论文具体怎么做。"
+  default_prompt: "请使用 $paper-comic。请用论文方法图解，生成一张中文科研笔记风的方法总览图。"
+policy:
+  allow_implicit_invocation: true

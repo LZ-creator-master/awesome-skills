@@ -1,0 +1,6 @@
+interface:
+  display_name: "产品需求风险排查"
+  short_description: "检查已有PRD中的矛盾、遗漏、优先级冲突、隐含假设和技术问题。"
+  default_prompt: "请使用 $prd-bomb-detector。请用产品需求风险排查，检查这份PRD的矛盾、遗漏场景和高风险假设。"
+policy:
+  allow_implicit_invocation: true
